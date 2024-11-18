@@ -3,12 +3,17 @@ package main
 import (
 	"flag"
 	"log"
+
+	"github.com/Bossnicks/read_adviser_bot/clients/telegram"
+)
+
+const (
+	tgBotHost = "api.telegram.org"
 )
 
 func main() {
-	t, err := token()
 
-	//telegramClient = telegram.New(token)
+	telegramClient := telegram.New(tgBotHost, mustToken())
 
 	//fetcher = fetcher.New(telegramClient)
 
@@ -17,7 +22,7 @@ func main() {
 	//consumer.Start(fetcher, processor)
 }
 
-func getToken() string {
+func mustToken() string {
 	token := flag.String(
 		"token-bot-token",
 		"default-token",
